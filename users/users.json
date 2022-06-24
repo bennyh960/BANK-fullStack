@@ -1,0 +1,94 @@
+[
+  {
+    "id": 12121,
+    "name": "shira",
+    "email": "shir12@gmail.com",
+    "cash": -990,
+    "credit": 1000,
+    "isActive": true,
+    "accounts": ["km088kl4hd7qs2"]
+  },
+  {
+    "id": 32121,
+    "name": "Dan",
+    "email": "Dan@gmail.com",
+    "cash": 0,
+    "credit": 0,
+    "isActive": true,
+    "accounts": ["km0bocl4hd84ux", "km0brkl4hd85v9", "km0dx8l4hdl0g2"]
+  },
+  {
+    "id": 35421,
+    "name": "Benny",
+    "email": "Benny@gmail.com",
+    "cash": 770,
+    "credit": 0,
+    "isActive": true,
+    "accounts": ["km0d3ol4hdmm28"]
+  },
+  {
+    "id": 354281,
+    "name": "Menny",
+    "email": "Menny@gmail.com",
+    "cash": 0,
+    "credit": 3000,
+    "isActive": true,
+    "accounts": ["km03p8l4hjtkco", "km0d8sl4hk5thq", "km0q0l4hk6crb", "km07ywl4hk9v1z"]
+  },
+  {
+    "id": "12345",
+    "name": "Moshe Hanan",
+    "email": "Mosh60@gmail.com",
+    "cash": "2123",
+    "credit": "10000",
+    "accounts": ["km03ksl4ihgh90"]
+  },
+  {
+    "id": "89289",
+    "name": "Yuval",
+    "email": "uvl@walla.com",
+    "cash": "3000",
+    "credit": "2000",
+    "accounts": ["km0a8cl4ihj36i"]
+  },
+  {
+    "id": "22131222",
+    "name": "Liat ",
+    "email": "liti@hotmail.com",
+    "cash": "-200",
+    "credit": "1000",
+    "accounts": ["km03j0l4ihmyjf"]
+  },
+  {
+    "id": "232341",
+    "name": "Hanna",
+    "email": "hani@gmail.com",
+    "cash": "1321",
+    "credit": "3000",
+    "accounts": ["km07u4l4ihp6ox"]
+  },
+  {
+    "name": "Nahum",
+    "email": "nahum@gmail.com",
+    "cash": "21231",
+    "credit": "2000",
+    "id": "291210231",
+    "accounts": ["km057gl4ihsrvy"]
+  },
+  {
+    "id": "21231109",
+    "name": "Eden",
+    "email": "eden@walla.com",
+    "cash": "30000",
+    "credit": "20000",
+    "accounts": ["km0a0cl4ihwd9f"]
+  },
+  {
+    "id": "11199921",
+    "name": "Ruty",
+    "email": "rut122@famil.com",
+    "cash": "300",
+    "credit": "1000",
+    "accounts": ["km0blol4ihxlrc"]
+  }
+]

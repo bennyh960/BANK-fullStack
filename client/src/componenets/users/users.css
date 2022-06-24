@@ -1,0 +1,11 @@
+.accounts-cards-container {
+  display: flex;
+  width: 90vw;
+  margin: auto;
+  flex-wrap: wrap;
+}
+
+.accounts-cards-container > * {
+  border: 1px solid black;
+  padding: 1rem;
+}
