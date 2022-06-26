@@ -1,5 +1,6 @@
 const express = require("express");
 const chalk = require("chalk");
+const depositOrWitherdawMoney = require("../controler/account.controller.js");
 
 const Account = require("../db/models/accounts.schema.js");
 // const data = require("../../users/users.js");
@@ -47,11 +48,27 @@ router.post("/users/newUser", async (req, res) => {
   }
 });
 
-// router.put("/admin/deposite-witherdaw/users", (req, res) => {
-//   const isValidDeposit = data.depositOrWitherdawMoney(req.body.accountId, req.body.money, req.body.otherId);
-//   const users = data.loadData("users");
-//   const user = users.find((u) => u.accounts.includes(req.body.accountId));
-//   const otheruser = users.find((u) => u.accounts.includes(req.body.otherId));
+// const createNewAccount = axios.create({
+//   baseURL: "http://localhost:5000/accounts/newAccount",
+// });
+
+router.patch("/accounts/edit/:id", async (req, res) => {
+  try {
+    const account = await Account.findById(req.params.id);
+    const updates = Object.keys(req.body);
+    updates.forEach((update) => (account[update] = req.body[update]));
+    // updates.forEach((update) => console.log(update));
+    console.log(req.body);
+
+    await account.save();
+    res.send(account);
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
+});
+
+// !
+router.patch("/admin/money-actions", depositOrWitherdawMoney);
 
 //   isValidDeposit
 //     ? res.status(200).send([user, otheruser])

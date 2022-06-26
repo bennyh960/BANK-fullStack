@@ -1,0 +1,23 @@
+.editItem {
+  width: 15%;
+  margin: 0;
+  padding: 0;
+  /* overflow-x: hidden; */
+  /* overflow-y: scroll; */
+}
+
+.steps .step.actionButton:hover {
+  background-color: rgba(181, 185, 185, 0.539);
+  cursor: pointer;
+}
+
+.form-container-action {
+  width: 50%;
+  position: absolute;
+  top: 20%;
+  left: 25%;
+  background-color: rgb(241, 239, 236);
+  z-index: 100000;
+  margin: auto;
+  border: 1px solid black;
+}

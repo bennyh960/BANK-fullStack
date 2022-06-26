@@ -30,10 +30,16 @@ const oneAccountAPI = axios.create({
   // baseURL: "mongodb://127.0.0.1:27017/bankDB",
 });
 const createNewAccount = axios.create({
-  baseURL: "http://localhost:5000/admin/newAccount",
+  baseURL: "http://localhost:5000/accounts/newAccount",
 });
 const createNewUser = axios.create({
   baseURL: "http://localhost:5000/users/newUser",
+});
+const updateAccount = axios.create({
+  baseURL: "http://localhost:5000/accounts/edit",
+});
+const moneyAction = axios.create({
+  baseURL: "http://localhost:5000/admin/money-actions",
 });
 
 const serverApi = {
@@ -43,6 +49,8 @@ const serverApi = {
   oneAccount: oneAccountAPI,
   createNewAccount: createNewAccount,
   createNewUser: createNewUser,
+  updateAccount,
+  moneyAction,
 };
 
 export default serverApi;

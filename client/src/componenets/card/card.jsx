@@ -33,7 +33,7 @@ export default function Card({
   return (
     <tr style={{ color: colorIfActive }}>
       <td>{firstName + " " + lastName}</td>
-      <td>{userID.slice(10)}</td>
+      <td>{userID.slice(16)}</td>
       <td>{passportId}</td>
 
       {isActive ? <td>Yes</td> : <td>No</td>}
@@ -46,7 +46,7 @@ export default function Card({
         <td style={{ color: "green" }}>{cash}</td>
       )}
       <td>{credit}</td>
-      {accounts !== undefined ? <td>{showAccountId(accounts)}</td> : <td>{accountId}</td>}
+      {accounts !== undefined ? <td>{showAccountId(accounts)}</td> : <td>{accountId.slice(16)}</td>}
       <td>
         <Link to={`/${accounts !== undefined ? "users" : "account"}/${userID}`}>
           <button className="ui active button go-to-btn" onClick={(e) => goToUserById(userID)}>
