@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Navbar from "../navbar/navbar";
 import "./home.css";
 import serverApi from "../api/api.js";
@@ -8,21 +8,30 @@ export default function Home({ accounts }) {
   const [searchRes, setSearchRes] = useState([]);
   const [accountChosen, setAccountChosen] = useState("");
   const [showActionMoney, setShowAction] = useState(false);
+  const [action, setAction] = useState("");
 
   const onChange = ({ target: { value } }) => {
     setValue(value);
     setSearchRes(accounts.filter((a) => a.firstName.includes(value)));
+    // console.log(searchRes);
     if (!value) setSearchRes([]);
   };
 
-  const toggleAction = () => {
+  const toggleAction = (actionTitle) => {
+    // console.log(actionTitle);
+    actionTitle ? setAction(actionTitle) : setAction("");
     setShowAction((p) => !p);
   };
   const searchMap = (showAccountDataParm) => {
     // console.log(searchRes);
     return searchRes.map((res) => {
       // return <div key={res._id}>{res.firstName}</div>;
-      return <SearchResults account={res} showAccountDataProp={showAccountDataParm} />;
+      // console.log(res);
+      return (
+        <React.Fragment key={res._id}>
+          <SearchResults account={res} showAccountDataProp={showAccountDataParm} />
+        </React.Fragment>
+      );
     });
   };
 
@@ -34,22 +43,16 @@ export default function Home({ accounts }) {
   return (
     <div>
       <Navbar />
-      <div classNname="ui category search">
-        <div classNname="ui icon input">
-          <input
-            classNname="prompt"
-            type="text"
-            value={inputVal}
-            onChange={onChange}
-            placeholder="Search accounts..."
-          />
-          <i classNname="search icon"></i>
+      <div className="ui category search my-search">
+        <div className="ui icon input">
+          <input className="prompt" type="text" value={inputVal} onChange={onChange} placeholder="Search accounts..." />
+          <i className="search icon"></i>
         </div>
-        <div classNname="results">{searchMap(showAccountDataProp)}</div>
-        {/* <div>{searchMap()}</div> */}
+        {/* <div className="results">{searchMap(showAccountDataProp)}</div> */}
+        <div className="search-results">{searchMap(showAccountDataProp)}</div>
       </div>
       {accountChosen && <Action account={accountChosen} toggleAction={toggleAction} />}
-      {showActionMoney && <ActionTaken account={accountChosen} toggleAction={toggleAction} />}
+      {showActionMoney && <ActionTaken account={accountChosen} toggleAction={toggleAction} action={action} />}
     </div>
   );
 }
@@ -57,6 +60,7 @@ export default function Home({ accounts }) {
 function SearchResults({ showAccountDataProp, account }) {
   const showAccountData = () => {
     showAccountDataProp(account);
+    console.log("line 63 ,", account);
   };
 
   return (
@@ -129,7 +133,7 @@ function ActionChoose({ title, icon, toggleAction }) {
   return (
     // <div className="ui three steps ">
     <>
-      <div className={`step actionButton `} onClick={toggleAction}>
+      <div className={`step actionButton `} onClick={() => toggleAction(title)}>
         <i className={`${icon} icon`}></i>
         <div className="content">
           <div className="title">{title}</div>
@@ -142,15 +146,24 @@ function ActionChoose({ title, icon, toggleAction }) {
 
 // witherdaw deposite
 function ActionTaken({ account, action, toggleAction }) {
-  // console.log(account);
+  const [moneyActionData, setMoneyVal] = useState({ cash: null, otherId: undefined });
   const actionMoney = (e) => {
     e.preventDefault();
     serverApi.moneyAction.patch("/", {
       accountId: account._id,
-      moneyTransfer: 5,
-      otherId: "62b770bd3b8e4c5f533b6f0c",
+      moneyTransfer: moneyActionData.cash,
+      // otherId: "62b770bd3b8e4c5f533b6f0c",
+      otherId: moneyActionData.otherId,
     });
     toggleAction();
+  };
+
+  const onChange = ({ target: { value, name } }) => {
+    setMoneyVal((p) => {
+      return { ...p, [name]: value };
+    });
+    // console.log(name, value);
+    console.log(moneyActionData);
   };
 
   return (
@@ -158,13 +171,21 @@ function ActionTaken({ account, action, toggleAction }) {
       <form class="ui form">
         <div class="field">
           <label>Money to {action}</label>
-          <input type="number" name="cash" placeholder="cash" />
+          {action === "Transfer" && (
+            <input
+              type="text"
+              name="otherId"
+              placeholder="Transfer account id"
+              value={moneyActionData.otherId}
+              onChange={onChange}
+            />
+          )}
+          <input type="number" name="cash" placeholder="cash" value={moneyActionData.cash} onChange={onChange} />
         </div>
 
         <div class="field">
           <div class="ui checkbox">
             <input type="checkbox" tabindex="0" class="hidden" />
-            <label>I agree to the Terms and Conditions</label>
           </div>
         </div>
         <button class="ui button" type="submit" onClick={actionMoney}>

@@ -1,10 +1,14 @@
 const { json } = require("express");
 const express = require("express");
 const fileUpload = require("express-fileupload");
-require("./BE/db/mongoose");
 const userRouter = require("./BE/routes/user.routes");
 const acountRouter = require("./BE/routes/accounts.router");
 const bodyParser = require("body-parser");
+const dotenv = require("dotenv");
+dotenv.config();
+require("./BE/db/mongoose");
+// console.log(process.env.DB_PASS);
+
 // const errorController = require("../bankWithMongoose/BE/error/error.controller.js");
 
 const app = express();

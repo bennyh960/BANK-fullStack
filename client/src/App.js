@@ -41,7 +41,7 @@ export default function App() {
   return (
     <div>
       <Router>
-        <Home path={"/"} accounts={accounts} />
+        <Home path={"/"} accounts={accounts} excact />
         <Accounts accounts={accounts} gotToAccountByIdAppProp={goToAccountByIdApp} />
         <Users users={users} gotToUserByIdAppProp={goToUserByIdApp} isRefreshprop={isRefreshFunc} />
         <Route path={`/users/${userId}`}>{/* <User id={userId} /> */}</Route>
