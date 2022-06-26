@@ -26,7 +26,13 @@ async function depositOrWitherdawMoneyInner(accountId, moneyTransfer, otherId) {
       console.log(chalk.gray.inverse(`${account.firstName} deposit ${moneyTransfer}$ to his account.`));
     }
 
+    console.log(
+      chalk.yellow("name: ", account.firstName, "\n", "before:", account.cash, "type:", typeof moneyTransfer)
+    );
+    // moneyTransfer = parseInt(moneyTransfer);
     account.cash += moneyTransfer;
+
+    console.log(chalk.yellow("name: ", account.firstName, "\n", "after:", account.cash, "type:", typeof moneyTransfer));
 
     await account.save();
     if (otherId && otherId !== accountId) {
@@ -39,7 +45,7 @@ async function depositOrWitherdawMoneyInner(accountId, moneyTransfer, otherId) {
             chalk.white.inverse(`${-moneyTransfer}$ transfer from ${account.firstName} to ${accountFriend.firstName}`)
           );
 
-      depositOrWitherdawMoneyInner(otherId, -moneyTransfer);
+      depositOrWitherdawMoneyInner(otherId, parseInt(-moneyTransfer));
     }
     // res.send(account);
     return true;

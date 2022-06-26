@@ -159,6 +159,7 @@ function ActionTaken({ account, actionT, toggleAction }) {
       otherId: moneyActionData.otherId,
     });
     toggleAction();
+    console.log(moneyActionData.cash);
   };
 
   const onChange = ({ target: { value, name } }) => {
