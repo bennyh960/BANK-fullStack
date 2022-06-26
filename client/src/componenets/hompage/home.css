@@ -21,7 +21,13 @@
   text-align: center;
   margin-left: 1.5rem;
   border-radius: 5px;
+  display: none;
 }
+
+.my-search:hover .search-results {
+  display: block;
+}
+
 .search-results > * {
   /* margin: 0 1rem; */
   /* padding: 0; */

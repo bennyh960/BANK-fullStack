@@ -15,7 +15,7 @@ import axios from "axios";
 //   baseURL: "/newAccount",
 // });
 //? ===================================================
-const accountsAPI = axios.create({
+const accounts = axios.create({
   baseURL: "http://localhost:5000/accounts",
 });
 const usersAPI = axios.create({
@@ -25,7 +25,7 @@ const oneUserAPI = axios.create({
   baseURL: "http://localhost:5000/users",
   // baseURL: "mongodb://127.0.0.1:27017/bankDB",
 });
-const oneAccountAPI = axios.create({
+const oneAccount = axios.create({
   baseURL: "http://localhost:5000/account",
   // baseURL: "mongodb://127.0.0.1:27017/bankDB",
 });
@@ -43,10 +43,10 @@ const moneyAction = axios.create({
 });
 
 const serverApi = {
-  accounts: accountsAPI,
+  accounts,
   users: usersAPI,
   oneUser: oneUserAPI,
-  oneAccount: oneAccountAPI,
+  oneAccount,
   createNewAccount: createNewAccount,
   createNewUser: createNewUser,
   updateAccount,

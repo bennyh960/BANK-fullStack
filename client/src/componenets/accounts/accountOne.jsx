@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { Redirect } from "react-router-dom";
+
 import "./accountOne.css";
 import serverApi from "../api/api.js";
 export default function AccountOne({ id }) {
@@ -10,13 +12,24 @@ export default function AccountOne({ id }) {
   };
   useEffect(() => {
     const getAccountAPi = async () => {
-      const { data } = await serverApi.oneAccount.get(`/${id}`);
-      setAccountData(data);
+      // console.log("test get methode");
+      try {
+        if (id) {
+          const { data } = await serverApi.oneAccount.get(`/${id}`);
+          setAccountData(data);
+        }
+      } catch (error) {
+        console.log("balagan", error);
+      }
       //   console.log(data);
     };
     getAccountAPi();
     console.log("tesrt");
-  }, [setAccountData, isUpdate]);
+  }, [setAccountData, isUpdate, id]);
+
+  if (!id) {
+    return <Redirect to="/accounts" />;
+  }
 
   return (
     <div>

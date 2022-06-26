@@ -15,9 +15,9 @@ export default function Accounts({ accounts, gotToAccountByIdAppProp }) {
 
   const drawAllAccounts = () => {
     // console.log(accounts);
-    return accounts.map((u) => {
+    return accounts.map((u, idx) => {
       return (
-        <Fragment key={u.accountId}>
+        <Fragment key={idx}>
           <Card
             firstName={u.firstName}
             lastName={u.lastName}

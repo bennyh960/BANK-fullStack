@@ -26,8 +26,13 @@ export default function Card({
   };
   const showAccountId = (accountObj) => {
     const accountArr = Object.keys(accountObj);
-    return accountArr.map((a) => {
-      return <Link to={`/account/${accountObj[a]}`}>{accountObj[a].slice(18)}</Link>;
+    return accountArr.map((a, idx) => {
+      // console.log(a);
+      return (
+        <Link key={idx} to={`/account/${accountObj[a]}`}>
+          {accountObj[a].slice(18)}
+        </Link>
+      );
     });
   };
   return (

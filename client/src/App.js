@@ -16,11 +16,15 @@ export default function App() {
 
   useEffect(() => {
     const getData = async () => {
-      const { data: accounts } = await serverApi.accounts.get();
-      const { data: users } = await serverApi.users.get();
+      try {
+        const { data: accounts } = await serverApi.accounts.get();
+        const { data: users } = await serverApi.users.get();
+        setAccounts(accounts);
+        setUsers(users);
+      } catch (error) {
+        console.log("balagan");
+      }
       // console.log(users);
-      setAccounts(accounts);
-      setUsers(users);
     };
     getData();
   }, [setUsers, setAccounts, isRefresh]);
@@ -43,7 +47,7 @@ export default function App() {
       <Router>
         <Home path={"/"} accounts={accounts} excact />
         <Accounts accounts={accounts} gotToAccountByIdAppProp={goToAccountByIdApp} />
-        <Users users={users} gotToUserByIdAppProp={goToUserByIdApp} isRefreshprop={isRefreshFunc} />
+        <Users users={users} goToUserByIdAccountProp={goToUserByIdApp} isRefreshprop={isRefreshFunc} />
         <Route path={`/users/${userId}`}>{/* <User id={userId} /> */}</Route>
         <Route path={`/account/${accountId}`}>
           <AccountOne id={accountId} />

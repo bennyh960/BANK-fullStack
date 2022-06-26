@@ -6,7 +6,7 @@ import Popup from "../popup/popup";
 import "./users.css";
 // import { useEffect } from "react";
 
-export default function Users({ users, isRefreshprop }) {
+export default function Users({ users, isRefreshprop, goToUserByIdAccountProp }) {
   const [isPopUp, setIsPopUp] = useState(false);
 
   const showHidePopUp = () => {
@@ -33,7 +33,7 @@ export default function Users({ users, isRefreshprop }) {
             userID={u._id}
             isActive={u.isActive}
             accounts={u.accounts}
-            // goToUserByIdAccountProp={gotToUserByIdAppProp}
+            goToUserByIdAccountProp={goToUserByIdAccountProp}
           />
         </Fragment>
       );
