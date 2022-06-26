@@ -29,7 +29,7 @@ async function depositOrWitherdawMoneyInner(accountId, moneyTransfer, otherId) {
     console.log(
       chalk.yellow("name: ", account.firstName, "\n", "before:", account.cash, "type:", typeof moneyTransfer)
     );
-    // moneyTransfer = parseInt(moneyTransfer);
+    moneyTransfer = parseInt(moneyTransfer);
     account.cash += moneyTransfer;
 
     console.log(chalk.yellow("name: ", account.firstName, "\n", "after:", account.cash, "type:", typeof moneyTransfer));
